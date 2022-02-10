@@ -30,7 +30,7 @@ Also, you are encouraged to click on the marker(*Click For More Info*).
 
 And the moment you click, you get the full name of film.
 
-<img width="500" src="https://github.com/KateKo04/Webmap_2/blob/master/data/tooltip.jpg"> <img width="463" src="https://github.com/KateKo04/Webmap_2/blob/master/data/film_name.jpg">
+<img width="400" src="https://github.com/KateKo04/Webmap_2/blob/master/data/tooltip.jpg"> <img width="363" src="https://github.com/KateKo04/Webmap_2/blob/master/data/film_name.jpg">
 
 Also, as I said earlier, you get 10 markers(don't count that camera marker, will say about it later). 
 
@@ -38,7 +38,7 @@ If you count cadetblue markers(ones with film icons), you get only 9.
 
 It can seem to you that one is overlayed, but if you zoom in, you'll see them both. 
 
-<img width="463" src="https://github.com/KateKo04/Webmap_2/blob/master/data/overlay.jpg"> <img width="463" src="https://github.com/KateKo04/Webmap_2/blob/master/data/camera_icon.jpg">
+<img width="363" src="https://github.com/KateKo04/Webmap_2/blob/master/data/overlay.jpg"> <img width="363" src="https://github.com/KateKo04/Webmap_2/blob/master/data/camera_icon.jpg">
 
 There is one additional camara marker on the map. 
 
