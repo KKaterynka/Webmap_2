@@ -85,12 +85,10 @@ def exact_location(location):
             Returns:
                     distance (str): accurate location
 
-    >>> exact_location("Los Angeles, California, USA") Location(Los Angeles, Los Angeles County, California,
-    United States, (34.0536909, -118.242766, 0.0)) >>> exact_location("Coventry, West Midlands, England,
-    UK") Location(Coventry, West Midlands Combined Authority, West Midlands, England, United Kingdom, (52.4081812,
-    -1.510477, 0.0)) >>> exact_location("Alamo Drafthouse Ritz, Austin, Texas, USA") Location(Alamo Drafthouse Cinema
-    - The Ritz, 320, East 6th Street, Downtown, Austin, Travis County, Texas, 78701, United States, (30.26740345,
-    -97.73958582383372, 0.0))
+    >>> exact_location("Los Angeles, California, USA")
+    Location(Los Angeles, Los Angeles County, California, United States, (34.0536909, -118.242766, 0.0))
+    >>> exact_location("Coventry, West Midlands, England, UK")
+    Location(Coventry, West Midlands Combined Authority, West Midlands, England, United Kingdom, (52.4081812, -1.510477, 0.0))
     """
     geo_address = Nominatim(user_agent='accurate-coordinates').geocode(location)
     while geo_address is None:
