@@ -24,7 +24,7 @@ With the previous example, you'll get map like this:
 
 ![](data/map_generation.jpg)
 
-You can zoom in to see exactly were movie was filmed. 
+You can zoom in to see exactly where movie was filmed. 
 
 Also, you are encouraged to click on the marker(*Click For More Info*). 
 
