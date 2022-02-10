@@ -1,11 +1,13 @@
-import folium
+"""Map creator"""
+
 import os
 import json
-import geopy
-from geopy.geocoders import Nominatim
 import math
 from math import cos, sin, atan, sqrt, radians
 import argparse
+import folium
+import geopy
+from geopy.geocoders import Nominatim
 
 # parser
 parser = argparse.ArgumentParser()
@@ -35,7 +37,8 @@ folium.GeoJson(overlay, name='United States', style_function=lambda x: style_lin
 # Create custom icon
 logoIcon = folium.features.CustomIcon('data/film_icon.png', icon_size=(90, 90))
 folium.Marker([44.068203, -114.742043],
-              popup="<strong>US is the country with the largest number of film productions!</strong>",
+              popup="<strong>US is the country with the "
+                    "largest number of film productions!</strong>",
               icon=logoIcon).add_to(map)
 
 places_film = []
@@ -63,12 +66,12 @@ def calculate_distance(lat1, lon1, lat2, lon2):
     >>> calculate_distance(0.9920147781045922, 0.5938175601962355, 0.5282879054484069, -1.7062860622340936)
     9326.484169816207
     """
-    RADIUS = 6373.0
+    radius = 6373.0
     haversin_distance_1 = (1 - math.cos(lat2 - lat1)) / 2 + math.cos(lat2) * math.cos(
         lat1) * ((1 - math.cos(lon2 - lon1)) / 2)
     haversin_distance_2 = 2 * math.atan2(sqrt(haversin_distance_1), sqrt(1 - haversin_distance_1))
-    distance = RADIUS * haversin_distance_2
-    return distance
+    distance_calc = radius * haversin_distance_2
+    return distance_calc
 
 
 def exact_location(location):
@@ -82,19 +85,18 @@ def exact_location(location):
             Returns:
                     distance (str): accurate location
 
-    >>> exact_location("Los Angeles, California, USA")
-    Location(Los Angeles, Los Angeles County, California, United States, (34.0536909, -118.242766, 0.0))
-    >>> exact_location("Coventry, West Midlands, England, UK")
-    Location(Coventry, West Midlands Combined Authority, West Midlands, England, United Kingdom, (52.4081812, -1.510477, 0.0))
-    >>> exact_location("Alamo Drafthouse Ritz, Austin, Texas, USA")
-    Location(Alamo Drafthouse Cinema - The Ritz, 320, East 6th Street, Downtown, Austin, Travis County, Texas, 78701, United States, (30.26740345, -97.73958582383372, 0.0))
+    >>> exact_location("Los Angeles, California, USA") Location(Los Angeles, Los Angeles County, California,
+    United States, (34.0536909, -118.242766, 0.0)) >>> exact_location("Coventry, West Midlands, England,
+    UK") Location(Coventry, West Midlands Combined Authority, West Midlands, England, United Kingdom, (52.4081812,
+    -1.510477, 0.0)) >>> exact_location("Alamo Drafthouse Ritz, Austin, Texas, USA") Location(Alamo Drafthouse Cinema
+    - The Ritz, 320, East 6th Street, Downtown, Austin, Travis County, Texas, 78701, United States, (30.26740345,
+    -97.73958582383372, 0.0))
     """
     geo_address = Nominatim(user_agent='accurate-coordinates').geocode(location)
     while geo_address is None:
         location = location[location.find(",") + 1:].strip()
         geo_address = Nominatim(user_agent='accurate-coordinates').geocode(location)
     return geo_address
-
 
 
 with open(args.path, 'r', encoding='utf-8') as fdata:
@@ -112,7 +114,8 @@ with open(args.path, 'r', encoding='utf-8') as fdata:
             line_name = line[2:braket_index_start - 2].strip()
         else:
             line_name = line[
-                        2:braket_index_start - 2].strip() + " " + f"({line[line.find('{') + 1:figure_braket_index].strip()})"
+                        2:braket_index_start - 2].strip() + " " +\
+                        f"({line[line.find('{') + 1:figure_braket_index].strip()}) "
 
         # Extract year of film
         line_year = line[braket_index_start + 1:braket_index_close]
@@ -149,7 +152,7 @@ with open(args.path, 'r', encoding='utf-8') as fdata:
         if year == int(line_year):
             places_film.append((line_name, float(res_lat), float(res_lon), distance))
 
-places_film = sorted(places_film, key=lambda i: i[-1])[:10]
+places_film = sorted(places_film, key=lambda x: x[-1])[:10]
 
 # Create markers
 for i in range(0, len(places_film)):
@@ -157,5 +160,4 @@ for i in range(0, len(places_film)):
                   tooltip=tooltip,
                   icon=folium.Icon(color='cadetblue', icon='film', prefix='fa')).add_to(map)
 
-map.save('task2.html')
-
+map.save('my_map.html')
