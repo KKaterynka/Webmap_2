@@ -16,8 +16,11 @@ To generate a map, you'll need to use a command line. Arguments to type in:
 Programe will try to find 10 places(where movies were filmed), which are the closest to the user's coordinates. 
 
 In the example below, you can see that it's made by argparse.
+Path to dataset (locations.list) can differ on your laptop.
 
-![](data/python_start.jpg)
+```python
+>>> python main.py 2016 56.83826 34.02324 D:\УКУ\ОП\семестр\Homework\Lab1\Task_2\locations.list
+```
 
 ## Create a Map
 With the previous example, you'll get map like this:
