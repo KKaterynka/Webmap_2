@@ -19,7 +19,7 @@ In the example below, you can see that it's made by argparse.
 Path to dataset (locations.list) can differ on your laptop.
 
 ```python
->>> python main.py 2016 56.83826 34.02324 D:\УКУ\ОП\семестр\Homework\Lab1\Task_2\locations.list
+>>> python main.py 2016 56.83826 34.02324 D:\УКУ\ОП\semester_2\Homework\Lab1\Task_2\locations.list
 ```
 
 ## Create a Map
